@@ -23,11 +23,12 @@ OSX and Windows systems.\n"
 warningIMF = "WARNING: Do not use this on IMF packages! IMF naming convention for files and folders is \
 key to the integrity of the package and should remain as delivered.\n"
 
-warningPurpose = '''The purpose of this script is to remove spaces and special characters from folders, subfolders, and 
-files in a file path you specify.\n\nIt replaces spaces with underscore, ampersands with lower-case n, # with the word Num.
-\nIt completely removes asterisks, dollar signs, commas, apostrophes, double and single quotes, exclamation points, parentheses,
-curly braces, brackets, carats, plus signs, semi-colons, and colons.\n'''
-
+warningPurpose = '''The purpose of this script is to remove spaces and special characters from folders, subfolders, and files.\n
+Here are way things will change:\n
+REPLACE WITH UNDERSCORE: Spaces, Brackets (square and angle), Carats, Curly Braces, Plus Signs, Colons, Semi-Colons, Back and Forward Slashes\n
+COMPLETELY DELETED: Apostrophes, Double and Single Quotes, Exclamation Points, Question Marks, @ Symbols, Percent Signs, Stars\n
+OTHER: Ampersand = n, # = Num
+'''
 
 def normalize_files_folders(directoryname):
     if os.path.isdir(directoryname):
@@ -36,8 +37,8 @@ def normalize_files_folders(directoryname):
             if roots[0] != '.':
                 newRoot = roots.replace('  ','_').replace(' _','_').replace(' -','-').replace('- ','-').replace(' ', '_').replace('&','n')\
                     .replace('#','Num').replace('*','').replace('(','').replace(')','').replace('!','').replace('?','').replace("'","").replace(',', '')\
-                .replace('%','').replace('@','').replace('\\','_').replace('/','_').replace('"','').replace('{','').replace('}','').replace('[','')\
-                .replace(']','').replace(';','').replace(':','').replace('^','').replace('+','')
+                .replace('%','').replace('@','').replace('\\','_').replace('/','_').replace('"','').replace('{','_').replace('}','_').replace('[','_')\
+                .replace(']','_').replace(';','_').replace(':','_').replace('^','_').replace('+','_').replace('<','_').replace('>','_').replace('|','_').replace('?','')
                 os.rename(roots, newRoot)
         for roots, dirs, files in os.walk(directoryname):
             for singleFile in files:
@@ -45,7 +46,7 @@ def normalize_files_folders(directoryname):
                     replaceFileName = singleFile.replace('  ','_').replace(' _','_').replace(' -','-').replace('- ','-').replace(' ', '_').replace('&','n')\
                     .replace('#','Num').replace('*','').replace('(','').replace(')','').replace('!','').replace('?','').replace("'","").replace(',', '') \
                     .replace('%', '').replace('@', '').replace('\\', '_').replace('/', '_').replace('"','').replace('{','').replace('}','').replace('[','')\
-                    .replace(']','').replace(';','').replace(':','').replace('^','').replace('+','')
+                    .replace(']','').replace(';','').replace(':','').replace('^','').replace('+','').replace('<','_').replace('>','_').replace('|','_').replace('?','')
                     os.rename(os.path.join(roots,singleFile), os.path.join(roots,replaceFileName))
         print("You have just won the war against poor naming conventions. \nAll spaces and \
 invalid characters have been removed from file and directory names.\nFight on, Comrade!\n")
