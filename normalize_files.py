@@ -4,14 +4,18 @@
 # author          :tfm
 # date            :20180110
 # version         :3.1
-# usage           :python pyscript.py
+# usage           :python normalize_files.py
 # notes           :Use at your own risk
-# python_version  :3.5
+# python_version  :3.6
 # =================================================================
 
 
 import os
 import os.path
+try:
+    from builtins import input
+except ImportError:
+    pass
 
 warningVersion = "This script runs best using Python 3.5 or higher. It is compatible with and has been tested on \
 OSX and Windows systems.\n"
@@ -44,11 +48,14 @@ invalid characters have been removed from file and directory names.\nFight on, C
         print("Invalid Path.")
 
 
-print("Welcome to the Naming Normalizer!\n")
+print("\nWelcome to the Naming Normalizer!\n")
 print(warningVersion)
 print(warningPurpose)
 print(warningIMF)
 print("As always, use at your own risk.\n")
-
-directoryName = input('Input Path You\'d Like To Normalize. >>')
-normalize_files_folders(directoryName)
+try:
+    directoryName = input('Input Path You\'d Like To Normalize. >>')
+except:
+    print("\nYou are using an outdated version of Python. Please upgrade to Python 3.5 or higher.")
+else:
+    normalize_files_folders(directoryName)
