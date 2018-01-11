@@ -1,17 +1,26 @@
-# FIGHT BACK against poor file naming conventions!
-# v.3 - Finally it's recursive! And also much cleaner code. Also cleans up invalid characters
+# !/usr/bin/env python
+# title           :normalize_files.py
+# description     :FIGHT BACK against poor file naming!
+# author          :tfm
+# date            :20180110
+# version         :3.1
+# usage           :python pyscript.py
+# notes           :Use at your own risk
+# python_version  :3.5
+# =================================================================
+
 
 import os
 import os.path
 
-warningVersion = "This script runs best using Python 3.5 or higher. It is compatible with and has been tested on\
+warningVersion = "This script runs best using Python 3.5 or higher. It is compatible with and has been tested on \
 OSX and Windows systems.\n"
 
 warningIMF = "WARNING: Do not use this on IMF packages! IMF naming convention for files and folders is \
 key to the integrity of the package and should remain as delivered.\n"
 
 warningPurpose = "The purpose of this script is to remove spaces and special characters from folders, subfolders, \
-and files from a file path you specify.\nIt replaces spaces with underscore, ampersands with lower-case \
+and files in a file path you specify.\nIt replaces spaces with underscore, ampersands with lower-case \
 n, # with the word Num and completely removes asterisks, exclamation points, and parenthesis.\n"
 
 
@@ -35,9 +44,11 @@ invalid characters have been removed from file and directory names.\nFight on, C
         print("Invalid Path.")
 
 
+print("Welcome to the Naming Normalizer!\n")
 print(warningVersion)
 print(warningPurpose)
 print(warningIMF)
+print("As always, use at your own risk.\n")
 
-directoryName = input('Input Path You\'d like to normalize. >>')
+directoryName = input('Input Path You\'d Like To Normalize. >>')
 normalize_files_folders(directoryName)
