@@ -37,6 +37,7 @@ COMPLETELY DELETED: Apostrophes, Double and Single Quotes, Exclamation Points, Q
 OTHER: Ampersand = n, # = Num
 '''
 
+
 def normalize_files_folders(directoryname):
     # check for valid path
     if os.path.isdir(directoryname):
@@ -121,14 +122,19 @@ invalid characters have been removed from file and directory names.\nFight on, C
         print("Invalid Path.")
 
 
-print("\nWelcome to the Naming Normalizer!\n")
-print(warningVersion)
-print(infoPurpose)
-print(warningIMF)
-print("As always, use at your own risk.\n")
-try:
-    directoryName = input('Input Path You\'d Like To Normalize. >>')
-except:
-    print("\nYou are using an outdated version of Python. Please upgrade to Python 3.5 or higher.")
-else:
-    normalize_files_folders(directoryName)
+def main():
+    print("\nWelcome to the Naming Normalizer!\n")
+    print(warningVersion)
+    print(infoPurpose)
+    print(warningIMF)
+    print("As always, use at your own risk.\n")
+    try:
+        directoryName = input('Input Path You\'d Like To Normalize. >>')
+    except:
+        print("\nYou are using an outdated version of Python. Please upgrade to Python 3.5 or higher (or pip install future).")
+    else:
+        normalize_files_folders(directoryName)
+
+
+if __name__ == '__main__':
+    main()
