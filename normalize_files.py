@@ -11,7 +11,7 @@
 
 # import libraries
 import os
-import os.path
+
 # attempt to import from future library if present
 try:
     from builtins import input
